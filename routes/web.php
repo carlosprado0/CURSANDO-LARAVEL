@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\PrincipalController;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,14 +16,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return 'Ola seja muito bem vindo';
-});
+// Route::get('/', function () {
+//     return 'Ola seja muito bem vindo';
+// });
 
-Route::get('/cliente', function () {
-    return 'Clientes';
-});
+route::get('/',['App\Http\Controllers\PrincipalController'::class,'principal']);
 
-Route::get('/contato', function () {
-    return 'Contato';
-});
+// Route::get('/cliente', function () {
+//     return 'Clientes';
+// });
+
+route::get('/cliente',['App\Http\Controllers\ClienteController'::class,'cliente']);
+
+
+// Route::get('/contato', function () {
+//     return 'Contato';
+// });
+
+route::get('/contato',['App\Http\Controllers\ContatoController'::class,'contato']);
