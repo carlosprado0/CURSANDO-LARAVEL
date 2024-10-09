@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class ClienteController extends Controller
 {
     public function cliente(){
-        echo 'bem vindo';
+        return view('Site.cliente');
     }
 }
