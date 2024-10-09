@@ -16,22 +16,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-route::get('/',['App\Http\Controllers\PrincipalController'::class,'principal']);
-
-
-route::get('/cliente',['App\Http\Controllers\ClienteController'::class,'cliente']);
-
-
-route::get('/contato',['App\Http\Controllers\ContatoController'::class,'contato']);
+route::get(
+    '/',['App\Http\Controllers\PrincipalController'::class,'principal']
+);
 
 
 route::get(
-    '/contato/{nome}/{categoria}/{assunto}/{mensagem}',
- function(string $nome,string $categoria,string $assunto,string $mensagem){
+    '/cliente',['App\Http\Controllers\ClienteController'::class,'cliente']
+);
+
+
+route::get(
+    '/contato',['App\Http\Controllers\ContatoController'::class,'contato']
+);
+
+
+route::get(
+    '/contato/{nome?}/{categoria?}/{assunto?}/{mensagem?}',
+ function(
+    string $nome = 'Nome não informado',
+    string $categoria = 'Categoria desconhecida',
+    string $assunto = 'Sem assunto',
+    string $mensagem = 'Sem mensagem'
+    )   {
 
     echo "Olá:$nome - $categoria - $assunto - $mensagem";
 
-});
-//Parametros ^
+        }
+);
+//Parametros e parametros opcionais ^
 //           |
              
