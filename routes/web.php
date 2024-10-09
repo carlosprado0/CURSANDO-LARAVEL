@@ -16,21 +16,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return 'Ola seja muito bem vindo';
-// });
-
 route::get('/',['App\Http\Controllers\PrincipalController'::class,'principal']);
 
-// Route::get('/cliente', function () {
-//     return 'Clientes';
-// });
 
 route::get('/cliente',['App\Http\Controllers\ClienteController'::class,'cliente']);
 
 
-// Route::get('/contato', function () {
-//     return 'Contato';
-// });
-
 route::get('/contato',['App\Http\Controllers\ContatoController'::class,'contato']);
+
+
+route::get(
+    '/contato/{nome}/{categoria}/{assunto}/{mensagem}',
+ function(string $nome,string $categoria,string $assunto,string $mensagem){
+
+    echo "Olá:$nome - $categoria - $assunto - $mensagem";
+
+});
+//Parametros ^
+//           |
+             
