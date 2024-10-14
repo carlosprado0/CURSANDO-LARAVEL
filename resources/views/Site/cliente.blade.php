@@ -10,5 +10,17 @@
 
     <h4>Pagina do Cliente(view)</h4>
     
+    <ul>
+        <li>
+            <a href="{{ route('site.index') }}">Principal</a>
+        </li>
+        <li>
+            <a href="{{ route('site.contato') }}">Contato</a>
+        </li>
+        <li>
+            <a href="{{ route('site.nos') }}">Nos</a>
+        </li>
+    </ul>
+
 </body>
 </html>

@@ -7,28 +7,38 @@ use Illuminate\Support\Facades\Route;
 
 route::get(
     '/',
-    ['App\Http\Controllers\PrincipalController'::class, 'principal']
-);
+    ['App\Http\Controllers\PrincipalController'::class, 'principal'])
+    ->name('site.index');
 
 
 route::get(
     '/cliente',
-    ['App\Http\Controllers\ClienteController'::class, 'cliente']
-);
+    ['App\Http\Controllers\ClienteController'::class, 'nos'])
+    ->name('site.nos');
 
 
 route::get(
     '/contato',
-    ['App\Http\Controllers\ContatoController'::class, 'contato']
-);
+    ['App\Http\Controllers\ContatoController'::class, 'contato'])
+    ->name('site.contato');
 
+route::get('/login',function (){return 'Login';})->name('site.login');
 
-route::get(
-    '/contato/{nome}/{categoria_id}',
-    function (
-        string $nome = 'Nome não informado',
-        int $categoria_id = 1
-    ) {
-        echo "Olá:$nome - $categoria_id ";
-    }
-)->where('categoria_id', '[0-9]+')->where('nome', '[A-Za-z]+');
+route::prefix('/app')->group(function() {
+route::get('/clientes',function (){return 'clientes';})->name('app.clientes');
+route::get('/fornecedores',function (){return 'fornecedores';})->name('app.fornecedores');
+route::get('/produtos',function (){return 'produtos'; })->name('app.produtos');
+});
+
+route::get('/rota1',function (){
+    return 'rota 1'; 
+})->name('site.rotas1');
+
+route::get('/rota2',function (){
+    return redirect()->route('site.total'); 
+})->name('site.rotas2');
+//route::redirect('rota2','/rota1');
+
+route::fallback(function() {
+    echo 'Esta pagina nao existe, <a href="'.route('site.index').'">clique aqui</a> para voltar';
+});

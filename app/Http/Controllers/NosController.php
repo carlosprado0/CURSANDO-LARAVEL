@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
-    public function cliente(){
-        return view('Site.cliente');
+    public function Nos(){
+        return view('Site.nos');
     }
 }
