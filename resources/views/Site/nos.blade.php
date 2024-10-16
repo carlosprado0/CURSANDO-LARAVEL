@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cliente</title>
+    <title>Nos</title>
 </head>
 <body>
 
-    <h4>Pagina do Cliente(view)</h4>
+    <h4>Pagina do Nos(view)</h4>
     
     <ul>
         <li>

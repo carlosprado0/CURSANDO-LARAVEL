@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\PrincipalController;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
+use PhpParser\Node\Expr\FuncCall;
 
 route::get(
     '/',
@@ -13,7 +14,7 @@ route::get(
 
 route::get(
     '/cliente',
-    ['App\Http\Controllers\ClienteController'::class, 'nos'])
+    ['App\Http\Controllers\NosController'::class, 'nos'])
     ->name('site.nos');
 
 
@@ -30,14 +31,7 @@ route::get('/fornecedores',function (){return 'fornecedores';})->name('app.forne
 route::get('/produtos',function (){return 'produtos'; })->name('app.produtos');
 });
 
-route::get('/rota1',function (){
-    return 'rota 1'; 
-})->name('site.rotas1');
-
-route::get('/rota2',function (){
-    return redirect()->route('site.total'); 
-})->name('site.rotas2');
-//route::redirect('rota2','/rota1');
+route::get('teste/{p1}/{p2}',['App\Http\Controllers\TesteController'::class,'teste'])->name('site.teste');
 
 route::fallback(function() {
     echo 'Esta pagina nao existe, <a href="'.route('site.index').'">clique aqui</a> para voltar';

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ClienteController extends Controller
+class NosController extends Controller
 {
     public function Nos(){
         return view('Site.nos');
