@@ -6,8 +6,14 @@ use Illuminate\Http\Request;
 
 class TesteController extends Controller
 {
-    public function teste($p1, $p2) {
-        // Use os parâmetros $p1 e $p2
-        return "O valor de p1 é: $p1 e o valor de p2 é: $p2";
+    public function teste(int $p1, int $p2) {
+        // parâmetros associativos $p1 e $p2
+        //return view('site.teste', ['x' => $p1, 'z' => $p2]);
+
+        //parametro tipo compact
+        //return view('site.teste', compact('p1', 'p2'));
+
+        //parametro tipo with
+        return view('site.teste')->with('xss',$p1)->with('zzz', $p2);
     }
 }

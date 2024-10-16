@@ -22,13 +22,14 @@ route::get(
     '/contato',
     ['App\Http\Controllers\ContatoController'::class, 'contato'])
     ->name('site.contato');
-
+    
 route::get('/login',function (){return 'Login';})->name('site.login');
 
-route::prefix('/app')->group(function() {
-route::get('/clientes',function (){return 'clientes';})->name('app.clientes');
-route::get('/fornecedores',function (){return 'fornecedores';})->name('app.fornecedores');
-route::get('/produtos',function (){return 'produtos'; })->name('app.produtos');
+
+Route::prefix('/app')->group(function() {
+    route::get('/clientes',function (){return 'clientes';})->name('app.clientes');
+    route::get('/fornecedores',['App\Http\Controllers\FornecedoresController'::class,'index'])->name('app.fornecedores');
+    route::get('/produtos',function (){return 'produtos'; })->name('app.produtos');
 });
 
 route::get('teste/{p1}/{p2}',['App\Http\Controllers\TesteController'::class,'teste'])->name('site.teste');
