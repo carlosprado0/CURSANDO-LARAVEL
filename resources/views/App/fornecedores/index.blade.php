@@ -13,7 +13,11 @@
 
     {{-- Enquanto (if) executa se o retorno for true --}}
     @php
-        // Para comentarios de uma unica linha
+    // CONDIÇÃO TERNARIA
+    $TesteCNPJ = isset($fornecedores[1]['CNPJ']) ? 'CNPJ informado' : 'CNPJ não informado';
+    echo $TesteCNPJ;
+    
+    // Para comentarios de uma unica linha
 
         /*
             Para comentarios de multiplas linhas
@@ -31,9 +35,9 @@
     */
      @endphp
 
-{{-- (unless) da o retorno de false --}}
-
-Fornecedor: {{ $fornecedores[0]['nome'] }}
+<br>
+<hr>
+{{--Fornecedor: {{ $fornecedores[0]['nome'] }}
 <br>
 Status: {{ $fornecedores[0]['status'] }}
 
@@ -41,9 +45,39 @@ Status: {{ $fornecedores[0]['status'] }}
     Fornecedor Indisponivel
 @endif
 <br>
+<hr>
+--}}
+
+{{-- (unless) da o retorno de false --}}
 @unless($fornecedores[0] ['status'] == 'Disponivel')
     Fornecedor Indisponivel
 @endunless
-  
+
+@isset($fornecedores)
+
+    @for($i = 0; isset($fornecedores[$i]); $i++)
+    Fornecedor: {{ $fornecedores[$i]['nome'] }}
+<br>
+    Status: {{ $fornecedores[$i]['status'] }}
+<br>
+    CNPJ: {{ $fornecedores[$i]['CNPJ'] ?? 'Dado não preenchido'}}
+<br>
+    Celular: {{ $fornecedores[$i]['DDD'] ?? 'Dado não preenchido'}} {{ $fornecedores[2]['Celular'] ?? ''}}
+
+@switch($fornecedores[2]['DDD'])
+    @case('11')
+    São Paulo - SP
+    @break
+    @case('62')
+    Jaragua - GO
+    @break
+    @case('63')
+    Brasilia - DF
+    @break
+    @default
+@endswitch
+<hr>
+@endfor
+@endisset
 </body>
 </html>
