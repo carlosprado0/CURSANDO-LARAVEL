@@ -55,16 +55,22 @@ Status: {{ $fornecedores[0]['status'] }}
 
 @isset($fornecedores)
 
-    @for($i = 0; isset($fornecedores[$i]); $i++)
-    Fornecedor: {{ $fornecedores[$i]['nome'] }}
-<br>
-    Status: {{ $fornecedores[$i]['status'] }}
-<br>
-    CNPJ: {{ $fornecedores[$i]['CNPJ'] ?? 'Dado não preenchido'}}
-<br>
-    Celular: {{ $fornecedores[$i]['DDD'] ?? 'Dado não preenchido'}} {{ $fornecedores[2]['Celular'] ?? ''}}
+    {{-- (foreach e forelse) ja faz o loop  --}}
 
-@switch($fornecedores[2]['DDD'])
+    @forelse($fornecedores as $indice => $fornecedor)
+    
+    Fornecedor: {{ $fornecedor['nome'] }}
+<br>
+    Status: {{ $fornecedor['status'] }}
+<br>
+    CNPJ: {{ $fornecedor['CNPJ'] ?? 'Dado não preenchido'}}
+<br>
+    Celular: {{ $fornecedor['DDD'] ?? 'Dado não preenchido'}} {{ $fornecedor['Celular'] ?? ''}}
+<hr>
+total de Registros: {{ $loop->count }}
+@empty
+    Não existe fornecedores cadastrados!
+{{--@switch($fornecedores[$i]['DDD'])
     @case('11')
     São Paulo - SP
     @break
@@ -75,9 +81,9 @@ Status: {{ $fornecedores[0]['status'] }}
     Brasilia - DF
     @break
     @default
-@endswitch
+@endswitch --}}
 <hr>
-@endfor
+@endforelse
 @endisset
 </body>
 </html>
