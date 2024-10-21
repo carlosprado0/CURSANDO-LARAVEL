@@ -4,46 +4,36 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\PrincipalController;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+use PhpParser\Node\Expr\FuncCall;
 
 route::get(
-    '/',['App\Http\Controllers\PrincipalController'::class,'principal']
-);
+    '/',
+    ['App\Http\Controllers\PrincipalController'::class, 'principal'])
+    ->name('site.index');
 
 
 route::get(
-    '/cliente',['App\Http\Controllers\ClienteController'::class,'cliente']
-);
+    '/cliente',
+    ['App\Http\Controllers\NosController'::class, 'nos'])
+    ->name('site.nos');
 
 
 route::get(
-    '/contato',['App\Http\Controllers\ContatoController'::class,'contato']
-);
+    '/contato',
+    ['App\Http\Controllers\ContatoController'::class, 'contato'])
+    ->name('site.contato');
+    
+route::get('/login',function (){return 'Login';})->name('site.login');
 
 
-route::get(
-    '/contato/{nome?}/{categoria?}/{assunto?}/{mensagem?}',
- function(
-    string $nome = 'Nome não informado',
-    string $categoria = 'Categoria desconhecida',
-    string $assunto = 'Sem assunto',
-    string $mensagem = 'Sem mensagem'
-    )   {
+Route::prefix('/app')->group(function() {
+    route::get('/clientes',function (){return 'clientes';})->name('app.clientes');
+    route::get('/fornecedores',['App\Http\Controllers\FornecedoresController'::class,'index'])->name('app.fornecedores.index');
+    route::get('/produtos',function (){return 'produtos'; })->name('app.produtos');
+});
 
-    echo "Olá:$nome - $categoria - $assunto - $mensagem";
+route::get('teste/{p1}/{p2}',['App\Http\Controllers\TesteController'::class,'teste'])->name('site.teste');
 
-        }
-);
-//Parametros e parametros opcionais ^
-//           |
-             
+route::fallback(function() {
+    echo 'Esta pagina nao existe, <a href="'.route('site.index').'">clique aqui</a> para voltar';
+});
