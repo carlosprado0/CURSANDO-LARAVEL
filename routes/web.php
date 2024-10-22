@@ -22,6 +22,10 @@ route::get(
     '/contato',
     ['App\Http\Controllers\ContatoController'::class, 'contato'])
     ->name('site.contato');
+route::post(
+    '/contato',
+    ['App\Http\Controllers\ContatoController'::class, 'contato'])
+    ->name('site.contato');
     
 route::get('/login',function (){return 'Login';})->name('site.login');
 

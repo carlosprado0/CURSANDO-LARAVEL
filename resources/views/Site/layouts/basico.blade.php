@@ -7,6 +7,7 @@
     </head>
 
     <body>
+        @include('Site.layouts._parcials.menu')
         @yield('conteudo')
     </body>
 </html>
