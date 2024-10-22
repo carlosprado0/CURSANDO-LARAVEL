@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-        <title>Super Gestão - Contato</title>
+        <title>MarketPlace - Contato</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="{{ asset('css/estilo_basico.css') }}">
     </head>
@@ -16,7 +16,7 @@
             <div class="menu">
                 <ul>
                     <li><a href="{{ route('site.index') }}">Principal</a></li>
-                    <li><a href="{{ route('site.sobrenos') }}">Sobre Nós</a></li>
+                    <li><a href="{{ route('site.nos') }}">Sobre Nós</a></li>
                     <li><a href="{{ route('site.contato') }}">Contato</a></li>
                 </ul>
             </div>
