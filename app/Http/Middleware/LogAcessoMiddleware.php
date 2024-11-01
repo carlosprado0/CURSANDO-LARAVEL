@@ -20,7 +20,7 @@ class LogAcessoMiddleware
         $rota = $request->getRequestUri();           // Captura a URI requisitada
         LogAcesso::create(['log' => "IP $ip requisitou a rota $rota"]);  // Armazena no log
 
-        return Response('chegamos ao middleware');
+        return $next($request);
         
     }
 }
