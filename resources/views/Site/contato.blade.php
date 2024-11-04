@@ -11,7 +11,7 @@
 
     <div class="informacao-pagina">
         <div class="contato-principal">
-            @component('Site.layouts._components.form_contato', ['classe' => 'borda-preta'])
+            @component('Site.layouts._components.form_contato', ['classe' => 'borda-preta', 'motivo_contatos' => $motivo_contatos])
                 <p>Aqui usamos $slot para enviar parametros usando os component</p>
             @endcomponent
         </div>

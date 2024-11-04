@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Fornecedores;
+use App\Models\SiteContato;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,5 +23,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
     $this->call(FornecedoresSeeder::class);
+    $this->call(SiteContatoSeeder::class);
+    $this->call(MotivoContatoSeeder::class);
     }
 }
