@@ -29,12 +29,13 @@ class ContatoController extends Controller
 
     public function salvar(Request $request){
         $request->validate([
-            'nome' => 'required|min:10|max:40',
+            'nome' => 'required|min:10|max:40|unique:site_contatos',
             'telefone' => 'required',
-            'email' => 'required|min:10',
-            'motivo_contao' => 'required',
+            'email' => 'email',
+            'motivo_contatos_id' => 'required',
             'mensagem' => 'required|max:2000'
         ]);
-
+        SiteContato::create($request->all());
+        return redirect()->route('site.index');
     }
 }
